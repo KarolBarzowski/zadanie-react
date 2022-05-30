@@ -1,10 +1,11 @@
 import { FETCH_BOOKS_BEGIN, FETCH_BOOKS_SUCCESS, FETCH_BOOKS_FAILURE, ADD_TO_CART } from 'actions';
 
 const initialState = {
-  cart: [],
+  cart: {},
   books: [],
   loading: true,
   error: null,
+  cartItems: 0,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -32,7 +33,13 @@ const rootReducer = (state = initialState, action) => {
     case ADD_TO_CART:
       return {
         ...state,
-        cart: [...state.cart, action.payload.id],
+        cart: {
+          ...state.cart,
+          [action.payload.id]: state.cart[action.payload.id]
+            ? state.cart[action.payload.id] + 1
+            : 1,
+        },
+        cartItems: state.cartItems + 1,
       };
 
     default:

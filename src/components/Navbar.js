@@ -17,15 +17,15 @@ const StyledLink = styled(NavLink)`
   text-decoration: none;
 `;
 
-function Navbar({ cart }) {
+function Navbar({ cartItems }) {
   return (
     <StyledNavbar>
       <StyledLink to="/">Strona główna</StyledLink>
-      <StyledLink to="/koszyk">Koszyk ({cart.length})</StyledLink>
+      <StyledLink to="/koszyk">Koszyk ({cartItems})</StyledLink>
     </StyledNavbar>
   );
 }
 
-const mapStateToProps = ({ cart }) => ({ cart });
+const mapStateToProps = ({ cartItems }) => ({ cartItems });
 
 export default connect(mapStateToProps)(Navbar);
