@@ -21,7 +21,7 @@ function Home({ books, loading, dispatch }) {
 
   return (
     <StyledWrapper>
-      {loading ? <p>loading</p> : null}
+      {loading ? <p>Ładowanie...</p> : null}
       {books.map(({ id, cover_url, title, author, pages, price, currency }) => (
         <Book
           key={id}

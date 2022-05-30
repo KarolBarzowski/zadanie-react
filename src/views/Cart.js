@@ -78,14 +78,15 @@ function Cart({ cart, books }) {
     const arr = [];
     let sum = 0;
 
-    Object.keys(cart).forEach((id) => {
+    cart.forEach(({ id, quantity }) => {
       const book = books.find((book) => parseInt(book.id) === parseInt(id));
 
       arr.push({
         ...book,
-        count: cart[id],
+        quantity,
       });
-      sum += (book.price / 100) * cart[id];
+
+      sum += (book.price / 100) * quantity;
     });
 
     setCartSorted(arr);
@@ -97,7 +98,7 @@ function Cart({ cart, books }) {
       <h1>Koszyk</h1>
       {cartSorted.length ? (
         <>
-          {cartSorted.map(({ id, cover_url, title, author, pages, price, currency, count }) => (
+          {cartSorted.map(({ id, cover_url, title, author, pages, price, currency, quantity }) => (
             <BookWrapper key={id}>
               <BookCover src={cover_url} alt="" />
               <div>
@@ -113,11 +114,11 @@ function Cart({ cart, books }) {
                 </BookPrice>
                 <BookPrice>
                   <Secondary>Sztuk: </Secondary>
-                  {count}
+                  {quantity}
                 </BookPrice>
                 <BookPrice>
                   <Secondary>Razem: </Secondary>
-                  {((price / 100) * count).toFixed(2)} {currency}
+                  {((price / 100) * quantity).toFixed(2)} {currency}
                 </BookPrice>
               </div>
             </BookWrapper>

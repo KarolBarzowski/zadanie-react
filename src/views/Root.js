@@ -4,6 +4,7 @@ import store from 'store';
 import GlobalStyle from 'theme/GlobalStyle';
 import Home from 'views/Home';
 import Cart from 'views/Cart';
+import Order from 'views/Order';
 import Navbar from 'components/Navbar';
 
 function Root() {
@@ -15,6 +16,7 @@ function Root() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/koszyk" element={<Cart />} />
+          <Route path="/zamowienie" element={<Order />} />
         </Routes>
       </BrowserRouter>
     </Provider>

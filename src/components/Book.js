@@ -22,6 +22,7 @@ const BookCover = styled.img`
 const BookTitle = styled.h3`
   font-weight: 500;
   color: rgba(0, 0, 0, 0.87);
+  margin-top: 10px;
 `;
 
 const BookAuthor = styled.p`
@@ -50,6 +51,7 @@ const BookButton = styled.button`
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 10px;
 
   :hover {
     background-color: rgb(52, 199, 89);
