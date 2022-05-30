@@ -25,6 +25,7 @@ function Home({ books, loading, dispatch }) {
       {books.map(({ id, cover_url, title, author, pages, price, currency }) => (
         <Book
           key={id}
+          id={id}
           cover_url={cover_url}
           title={title}
           author={author}

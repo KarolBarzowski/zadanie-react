@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { addItem as addItemAction } from 'actions';
 
 const StyledBookWrapper = styled.div`
   display: flex;
@@ -54,7 +56,7 @@ const BookButton = styled.button`
   }
 `;
 
-function Book({ id, cover_url, title, author, pages, price, currency }) {
+function Book({ id, cover_url, title, author, pages, price, currency, addItem }) {
   return (
     <StyledBookWrapper>
       <BookCover src={cover_url} alt="" />
@@ -68,9 +70,15 @@ function Book({ id, cover_url, title, author, pages, price, currency }) {
         <Secondary>Cena: </Secondary>
         {(price / 100).toFixed(2)} {currency}
       </BookPrice>
-      <BookButton type="button">Dodaj do koszyka</BookButton>
+      <BookButton type="button" onClick={() => addItem(id)}>
+        Dodaj do koszyka
+      </BookButton>
     </StyledBookWrapper>
   );
 }
 
-export default Book;
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (id) => dispatch(addItemAction(id)),
+});
+
+export default connect(null, mapDispatchToProps)(Book);

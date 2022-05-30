@@ -1,4 +1,4 @@
-import { FETCH_BOOKS_BEGIN, FETCH_BOOKS_SUCCESS, FETCH_BOOKS_FAILURE } from 'actions';
+import { FETCH_BOOKS_BEGIN, FETCH_BOOKS_SUCCESS, FETCH_BOOKS_FAILURE, ADD_TO_CART } from 'actions';
 
 const initialState = {
   cart: [],
@@ -28,6 +28,11 @@ const rootReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload.error,
         books: [],
+      };
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cart: [...state.cart, action.payload.id],
       };
 
     default:
