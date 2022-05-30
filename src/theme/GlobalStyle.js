@@ -8,6 +8,11 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
+
+  body {
+    background-color: #F0F7FF;
+    font-family: "Poppins", sans-serif;
+  }
 `;
 
 export default GlobalStyle;

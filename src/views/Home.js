@@ -1,12 +1,17 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchBooks } from 'actions';
-import styledComponents from 'styled-components';
+import styled from 'styled-components';
+import Book from 'components/Book';
 
-const BookCover = styledComponents.img`
-  height: auto;
-  width: 144px;
-  border-radius: 5px;
+const StyledWrapper = styled.section`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px;
+  height: 100%;
+  width: 100%;
 `;
 
 function Home({ books, loading, dispatch }) {
@@ -15,18 +20,20 @@ function Home({ books, loading, dispatch }) {
   }, [dispatch]);
 
   return (
-    <div>
+    <StyledWrapper>
       {loading ? <p>loading</p> : null}
-      {books.map((book) => (
-        <div key={book.id}>
-          <BookCover src={book.cover_url} alt="" />
-          <h3>{book.title}</h3>
-          <p>{book.author}</p>
-          <p>{book.pages}</p>
-          <button type="button">Dodaj do koszyka</button>
-        </div>
+      {books.map(({ id, cover_url, title, author, pages, price, currency }) => (
+        <Book
+          key={id}
+          cover_url={cover_url}
+          title={title}
+          author={author}
+          pages={pages}
+          price={price}
+          currency={currency}
+        />
       ))}
-    </div>
+    </StyledWrapper>
   );
 }
 
