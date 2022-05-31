@@ -55,7 +55,7 @@ const BookPrice = styled.p`
   color: rgba(0, 0, 0, 0.87);
 `;
 
-const Button = styled(NavLink)`
+const ButtonLink = styled(NavLink)`
   padding: 12px 16px;
   background-color: rgb(0, 122, 255);
   border: none;
@@ -124,7 +124,7 @@ function Cart({ cart, books }) {
             </BookWrapper>
           ))}
           <BookTitle>Suma: {sum} PLN</BookTitle>
-          <Button to="/zamowienie">Przejdź do płatności</Button>
+          <ButtonLink to="/zamowienie">Dalej</ButtonLink>
         </>
       ) : (
         <p>Koszyk jest pusty!</p>
