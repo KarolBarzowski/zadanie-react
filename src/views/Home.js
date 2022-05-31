@@ -14,13 +14,14 @@ const StyledWrapper = styled.section`
   width: 100%;
 `;
 
-function Home({ books, loading, dispatch }) {
+function Home({ books, loading, dispatch, error }) {
   useEffect(() => {
     dispatch(fetchBooks());
   }, [dispatch]);
 
   return (
     <StyledWrapper>
+      {error ? <p>Wystąpił błąd!</p> : null}
       {loading ? <p>Ładowanie...</p> : null}
       {books.map(({ id, cover_url, title, author, pages, price, currency }) => (
         <Book
